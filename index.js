@@ -6,6 +6,7 @@ import videoRouter from './routes/videos.js'
 import commentRouter from './routes/comments.js'
 import authRouter from './routes/auths.js';
 import cookieParser from "cookie-parser";
+import cors from "cors"
 const app = express()
 dotenv.config()// without this it will not work 
   
@@ -17,6 +18,7 @@ const connect = ()=>{
         throw err;
     })
 } 
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json())//otherwise it will not allow you to use json file
 app.use('/api/auth',authRouter)
